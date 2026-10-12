@@ -11,6 +11,7 @@ from pytz import timezone
 from utils import expand_config_template
 from storage import save_to_file, copy_file
 from envoy import Envoy
+from access_log import AccessLog
 from logger import get_logger
 
 logger = get_logger('app')
@@ -77,6 +78,8 @@ def main():
     scenario_groups = build_scenarios(conf, test_id)
     all_results = []
     envoy = Envoy()
+    access_log = AccessLog()
+    access_log.reset()
 
     for scenario_group in scenario_groups.keys():
         total_group_scenarios = len(scenario_groups[scenario_group])
@@ -105,6 +108,7 @@ def main():
 
         all_results += results
         save_to_file(f'{test_id}/results_{scenario_group}', results, 'csv')
+        access_log.collect(f'{test_id}/accesslog_{scenario_group}.log')
             
     save_to_file(f'{test_id}/results', all_results, 'csv')
 

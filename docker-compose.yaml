@@ -29,10 +29,12 @@ services:
     volumes:
       - ./samples/config-all-delay.json:/opt/app/conf/conf.json
       - ./results:/opt/app/resilience-tests
+      - envoy-logs:/opt/app/envoy-logs
     environment:
       - DISK_PATH=/opt/app/resilience-tests
       - CONFIG_FILE=/opt/app/conf/conf.json
       - ENVOY_ADMIN_URL=http://server:9901
+      - ENVOY_ACCESS_LOG_PATH=/opt/app/envoy-logs/access.log
       - TIME_ZONE=America/Sao_Paulo
     depends_on:
       - resilience4j
@@ -46,3 +48,8 @@ services:
     ports:
       - 9901:9901
       - 9211:9211
+    volumes:
+      - envoy-logs:/var/log/envoy
+
+volumes:
+  envoy-logs:
