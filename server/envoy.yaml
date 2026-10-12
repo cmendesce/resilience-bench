@@ -62,7 +62,5 @@ static_resources:
                 port_value: 8080
 layered_runtime:
   layers:
-  - name: disk_layer_0
-    disk_layer:
-      symlink_root: /srv/runtime/current
-      subdirectory: envoy
+  - name: admin_layer
+    admin_layer: {}
