@@ -27,14 +27,12 @@ services:
       context: ./scheduler
     container_name: scheduler
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
       - ./samples/config-all-delay.json:/opt/app/conf/conf.json
       - ./results:/opt/app/resilience-tests
     environment:
       - DISK_PATH=/opt/app/resilience-tests
       - CONFIG_FILE=/opt/app/conf/conf.json
-      - ENVOY_FAULT_INJECTION_PATH=/opt/app/fault-injection
-      - DOCKER_HOST=/var/run/docker.sock
+      - ENVOY_ADMIN_URL=http://server:9901
       - TIME_ZONE=America/Sao_Paulo
     depends_on:
       - resilience4j
@@ -48,5 +46,3 @@ services:
     ports:
       - 9901:9901
       - 9211:9211
-    volumes:
-      - ./runtime:/srv/runtime
