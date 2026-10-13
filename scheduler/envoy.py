@@ -50,6 +50,24 @@ class Envoy:
         else:
             logger.error(f'Missing fault type!')
 
+    def set_fault(self, fault_spec, percentage):
+        """
+        Unconditionally sets the fault rate in a single admin call, disabling the other fault type.
+        Used to flip faults on and off at time window edges, where setup_fault's caching would skip calls.
+        """
+        fault_type = fault_spec['type']
+        if fault_type == 'delay':
+            values = {DELAY_PERCENT_KEY: percentage, DELAY_DURATION_KEY: fault_spec['duration'], ABORT_PERCENT_KEY: 0}
+            self._fault_duration = fault_spec['duration']
+        elif fault_type == 'abort':
+            values = {ABORT_PERCENT_KEY: percentage, ABORT_STATUS_KEY: fault_spec['status'], DELAY_PERCENT_KEY: 0}
+            self._fault_status = fault_spec['status']
+        else:
+            raise ValueError(f'Fault type {fault_type} is not supported!')
+        self._runtime_modify(values)
+        self._fault_type = fault_type
+        self._fault_percentage = percentage
+
     def enable_delay_fault(self, duration, percentage):
         try:
             self._runtime_modify({DELAY_PERCENT_KEY: percentage, DELAY_DURATION_KEY: duration})
