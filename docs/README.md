@@ -88,6 +88,27 @@ The latter parameter is useful to prevent the client application from never reac
 | percentage | `array of numbers` | yes | Array containing the percentages of failures to be injected by the proxy service into the target service invocation flow. Each element of the array represents a different test scenario. 
 | duration | `number` | no | Duration (in miliseconds) of the delay failures to injected by the proxy service. Required when type is *delay*. |
 | status | `number` | no | HTTP status code to be returned by the proxy service to the client service upon each failed invocation. Required when type is *abort*. |
+| windows | `array of windows` | no | Time windows during which the failure is injected. When present, `percentage` applies only inside the windows and no failures are injected outside them. When omitted, failures are injected throughout the whole scenario. See [Time-window failures](#time-window-failures). |
+
+#### Time-window failures
+
+By default, each request fails independently with the given `percentage` probability for the whole scenario. To instead simulate an outage, such as the target service returning 503 for 5 seconds and then working as usual, add a `windows` list to the fault specification:
+
+```json
+"fault": {
+    "type": "abort",
+    "status": 503,
+    "percentage": [100],
+    "windows": [
+        { "start": 2000, "duration": 5000 },
+        { "start": 15000, "duration": 5000 }
+    ]
+}
+```
+
+Each window has a `start` and a `duration`, both in milliseconds. `start` is measured from the beginning of each scenario execution (every round starts its own clock). Windows must be sorted by `start` and must not overlap. Inside a window, the proxy service fails `percentage` percent of the requests (use `100` for a full outage). Outside the windows, no failures are injected. Delay failures work the same way. See [samples/config-abort-windows.json](../samples/config-abort-windows.json) for a complete example.
+
+A scenario still ends when `succRequests` or `maxRequests` is reached, so it must last longer than the end of its last window, otherwise later windows never happen. The clients invoke the target service in a tight loop: a successful request takes a few milliseconds, and a request aborted by the proxy takes well under one millisecond, so size `succRequests` so that the scenario outlasts the windows, and `maxRequests` so that the failures during the windows do not exhaust it. The `faultWindowsStarted`, `faultWindowsCompleted` and `scenarioDurationMs` result columns show whether each scenario covered all windows, and the scheduler logs a warning when it did not.
 
 
 ### Resilience parameters
@@ -248,6 +269,26 @@ Each CSV file also contains an additional set columns corresponding to the contr
             <td>faultStatus</td>
             <td><code>number</code></td>
             <td>HTTP status code returned to the client service by the proxy service upon failure</td>
+        </tr>
+        <tr>
+            <td>faultWindows</td>
+            <td><code>string</code></td>
+            <td>JSON list of the failure time windows. Only present for time-window failures</td>
+        </tr>
+        <tr>
+            <td>faultWindowsStarted</td>
+            <td><code>number</code></td>
+            <td>Number of failure time windows that started before the scenario ended. Only present for time-window failures</td>
+        </tr>
+        <tr>
+            <td>faultWindowsCompleted</td>
+            <td><code>number</code></td>
+            <td>Number of failure time windows that ended before the scenario ended. Only present for time-window failures</td>
+        </tr>
+        <tr>
+            <td>scenarioDurationMs</td>
+            <td><code>number</code></td>
+            <td>Duration of the scenario execution (all users), in milliseconds, as measured by the scheduler. Only present for time-window failures</td>
         </tr>
     </tbody>
 </table>

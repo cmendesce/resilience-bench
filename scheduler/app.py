@@ -11,6 +11,7 @@ from pytz import timezone
 from utils import expand_config_template
 from storage import save_to_file, copy_file
 from envoy import Envoy
+from fault_timeline import FaultTimeline, validate_windows
 from access_log import AccessLog
 from logger import get_logger
 
@@ -71,6 +72,8 @@ def build_scenarios(conf, test_id):
 def main():
     conf_file = open(os.environ.get('CONFIG_FILE'), 'r')
     conf = jstyleson.load(conf_file)
+    if 'windows' in conf['fault']:
+        validate_windows(conf['fault']['windows'])
     
     test_id = conf['testId'] if 'testId' in conf else get_current_time().strftime('%a %b %d %Hh%Mm%Ss %Y')
     copy_file(os.environ.get('CONFIG_FILE'), f'{test_id}/scenarios-original.json')
@@ -93,18 +96,37 @@ def main():
             logger.info(f'group[{scenario_group}] processing scenario {scenario_group_count}/{total_group_scenarios}')
             users = scenario['users'] + 1
 
-            envoy.setup_fault(scenario['faultSpec'], int(scenario['faultPercentage']))
-    
+            fault_spec = scenario['faultSpec']
+            timeline = None
+            if 'windows' in fault_spec:
+                timeline = FaultTimeline(envoy, fault_spec, int(scenario['faultPercentage']), fault_spec['windows'])
+            else:
+                envoy.setup_fault(fault_spec, int(scenario['faultPercentage']))
+
+            scenario_results = []
             with concurrent.futures.ThreadPoolExecutor(max_workers=users) as executor:
-                futures = []
-                for user_id in range(1, users):
-                    futures.append(executor.submit(do_test, scenario=scenario, user_id=user_id))
-                
-                index_result = 0
-                for future in concurrent.futures.as_completed(futures):
-                    results.append(future.result())
-                    index_result += 1
-                    logger.info(f'group[{scenario_group}] collecting user results {index_result}/{users-1}')
+                if timeline:
+                    timeline.start()
+                try:
+                    futures = []
+                    for user_id in range(1, users):
+                        futures.append(executor.submit(do_test, scenario=scenario, user_id=user_id))
+
+                    index_result = 0
+                    for future in concurrent.futures.as_completed(futures):
+                        scenario_results.append(future.result())
+                        index_result += 1
+                        logger.info(f'group[{scenario_group}] collecting user results {index_result}/{users-1}')
+                finally:
+                    if timeline:
+                        timeline.stop()
+
+            if timeline:
+                for result in scenario_results:
+                    result['faultWindowsStarted'] = timeline.windows_started
+                    result['faultWindowsCompleted'] = timeline.windows_completed
+                    result['scenarioDurationMs'] = timeline.duration_ms
+            results += scenario_results
 
         all_results += results
         save_to_file(f'{test_id}/results_{scenario_group}', results, 'csv')
@@ -147,7 +169,8 @@ def do_test(scenario, user_id):
         result['strategy'] = pattern_template['strategy']
         result['faultPercentage'] = fault_percentage
         for fault_key in fault_spec.keys():
-            result[f'fault{fault_key.capitalize()}'] = fault_spec[fault_key]        
+            fault_value = fault_spec[fault_key]
+            result[f'fault{fault_key.capitalize()}'] = json.dumps(fault_value) if isinstance(fault_value, (list, dict)) else fault_value
         for config_key in pattern_config.keys():
             result[config_key] = pattern_config[config_key]
     else:
