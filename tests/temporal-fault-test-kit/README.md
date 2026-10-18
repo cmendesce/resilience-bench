@@ -18,25 +18,26 @@ Cockatiel is omitted because the feature PR description notes a separate, pre-ex
 
 ## How to run
 
-1. Check out the feature branch and build/start the Docker Compose environment using the repository's normal setup instructions.
-2. In `docker-compose.yaml`, temporarily change the scheduler's config volume to the test file, for example:
+The kit ships a Compose override, [`docker-compose.yaml`](./docker-compose.yaml), that runs everything locally: it mounts the selected test config into the scheduler and stores results on the local file system (`DISK_PATH`), so no AWS credentials or S3 bucket are needed and the repository's `docker-compose.yaml` stays untouched.
 
-   ```yaml
-   volumes:
-     - ./tests/temporal-fault-test-kit/configs/01-abort-single-window.json:/opt/app/conf/conf.json
-     - ./results:/opt/app/resilience-tests
-   ```
-
-   Keep the remaining scheduler volumes and environment variables intact.
-3. Run one file at a time:
+1. From the repository root, pick a config with `TEST_CONFIG` (a path relative to this folder) and run it:
 
    ```sh
-   docker-compose up --build --abort-on-container-exit
+   TEST_CONFIG=configs/01-abort-single-window.json \
+     docker compose -f docker-compose.yaml -f tests/temporal-fault-test-kit/docker-compose.yaml \
+     up --build --abort-on-container-exit --exit-code-from scheduler scheduler
    ```
 
-   Use `docker compose` instead if that is the installed CLI.
-4. Inspect scheduler logs, Envoy access logs and generated CSVs. Then run `docker-compose down` before the next config. Each file has a unique `testId`.
-5. For each file in `invalid-configs/`, mount it and check for a clear startup validation error and no client scenario execution.
+   Naming the `scheduler` service starts only it and its dependencies (server, Polly, Resilience4j), so the Cockatiel client is not built. Use `docker-compose` instead of `docker compose` if that is the installed CLI.
+2. Results are written to `tests/temporal-fault-test-kit/results/<testId>/` (ignored by git). Inspect them together with the scheduler logs and Envoy access logs.
+3. Tear the environment down before the next config, so Envoy starts with a clean runtime:
+
+   ```sh
+   docker compose -f docker-compose.yaml -f tests/temporal-fault-test-kit/docker-compose.yaml down
+   ```
+
+   Each file has a unique `testId`, so results from different configs do not overwrite each other.
+4. For each file in `invalid-configs/`, run it the same way (e.g. `TEST_CONFIG=invalid-configs/invalid-overlap.json`) and check for a clear startup validation error and no client scenario execution; the scheduler exits with a non-zero code.
 
 ## Pass/fail checklist
 
