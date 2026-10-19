@@ -1,0 +1,34 @@
+{
+  "testId": "tf_smoke_05_bernoulli_regression",
+  "users": [
+    5
+  ],
+  "rounds": 1,
+  "maxRequests": 100000,
+  "succRequests": 1000,
+  "targetUrl": "http://server:9211/bytes/1000",
+  "fault": {
+    "type": "abort",
+    "status": 503,
+    "percentage": [
+      0,
+      50
+    ]
+  },
+  "clientSpecs": [
+    {
+      "strategy": "baseline",
+      "platform": "dotnet",
+      "lib": "polly",
+      "url": "http://polly/baseline",
+      "patternConfig": {}
+    },
+    {
+      "strategy": "baseline",
+      "platform": "java",
+      "lib": "resilience4j",
+      "url": "http://resilience4j/baseline",
+      "patternConfig": {}
+    }
+  ]
+}

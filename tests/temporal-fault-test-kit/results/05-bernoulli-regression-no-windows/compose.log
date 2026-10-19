@@ -1,0 +1,62 @@
+time="2026-10-18T17:18:15-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Network resilience-bench_default Creating 
+ Network resilience-bench_default Created 
+ Container server Creating 
+ Container server Created 
+ Container resilience4j Creating 
+ Container polly Creating 
+ Container polly Created 
+ Container resilience4j Created 
+ Container scheduler Creating 
+ Container scheduler Created 
+Attaching to scheduler
+ Container server Starting 
+ Container server Started 
+ Container resilience4j Starting 
+ Container polly Starting 
+ Container resilience4j Started 
+ Container polly Started 
+ Container server Waiting 
+ Container server Healthy 
+ Container scheduler Starting 
+ Container scheduler Started 
+scheduler  | storage      2026-10-18 20:18:18,787 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/scenarios-original.json saved to disk
+scheduler  | app          2026-10-18 20:18:18,787 INFO     8 scenarios generated
+scheduler  | storage      2026-10-18 20:18:18,788 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/scenarios.json saved to disk
+scheduler  | app          2026-10-18 20:18:18,788 INFO     group[f0u5] starting processing 2 scenarios
+scheduler  | app          2026-10-18 20:18:18,788 INFO     group[f0u5] processing scenario 1/2
+scheduler  | envoy        2026-10-18 20:18:18,790 INFO     Disabled delay fault injection in envoy
+scheduler  | envoy        2026-10-18 20:18:18,790 INFO     Enabled 503 abort fault injection in envoy for 0% of requests
+scheduler  | app          2026-10-18 20:18:20,645 INFO     group[f0u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:18:20,646 INFO     group[f0u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:18:20,651 INFO     group[f0u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:18:20,656 INFO     group[f0u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:18:20,662 INFO     group[f0u5] collecting user results 5/5
+scheduler  | app          2026-10-18 20:18:20,662 INFO     group[f0u5] processing scenario 2/2
+scheduler  | app          2026-10-18 20:18:22,663 INFO     group[f0u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:18:22,663 INFO     group[f0u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:18:22,664 INFO     group[f0u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:18:22,664 INFO     group[f0u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:18:22,675 INFO     group[f0u5] collecting user results 5/5
+scheduler  | storage      2026-10-18 20:18:22,677 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/results_f0u5.csv saved to disk
+scheduler  | app          2026-10-18 20:18:22,677 INFO     group[f50u5] starting processing 2 scenarios
+scheduler  | app          2026-10-18 20:18:22,677 INFO     group[f50u5] processing scenario 1/2
+scheduler  | envoy        2026-10-18 20:18:22,678 INFO     Disabled delay fault injection in envoy
+scheduler  | envoy        2026-10-18 20:18:22,679 INFO     Enabled 503 abort fault injection in envoy for 50% of requests
+scheduler  | app          2026-10-18 20:18:24,464 INFO     group[f50u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:18:24,485 INFO     group[f50u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:18:24,506 INFO     group[f50u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:18:24,513 INFO     group[f50u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:18:24,515 INFO     group[f50u5] collecting user results 5/5
+scheduler  | app          2026-10-18 20:18:24,516 INFO     group[f50u5] processing scenario 2/2
+scheduler  | app          2026-10-18 20:18:26,503 INFO     group[f50u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:18:26,532 INFO     group[f50u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:18:26,547 INFO     group[f50u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:18:26,555 INFO     group[f50u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:18:26,560 INFO     group[f50u5] collecting user results 5/5
+scheduler  | storage      2026-10-18 20:18:26,564 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/results_f50u5.csv saved to disk
+scheduler  | storage      2026-10-18 20:18:26,565 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/results.csv saved to disk
+[Kscheduler exited with code 0
+ Compose Stopping Aborting on container exit...
+ Container scheduler Stopping 
+ Container scheduler Stopped 

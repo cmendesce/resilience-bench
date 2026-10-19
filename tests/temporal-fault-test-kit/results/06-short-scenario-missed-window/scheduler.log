@@ -1,0 +1,21 @@
+time="2026-10-18T17:18:33-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+storage      2026-10-18 20:18:33,602 INFO     File /opt/app/resilience-tests/tf_smoke_06_missed_window/scenarios-original.json saved to disk
+app          2026-10-18 20:18:33,602 INFO     2 scenarios generated
+storage      2026-10-18 20:18:33,603 INFO     File /opt/app/resilience-tests/tf_smoke_06_missed_window/scenarios.json saved to disk
+app          2026-10-18 20:18:33,603 INFO     group[f100u5] starting processing 2 scenarios
+app          2026-10-18 20:18:33,603 INFO     group[f100u5] processing scenario 1/2
+app          2026-10-18 20:18:33,711 INFO     group[f100u5] collecting user results 1/5
+app          2026-10-18 20:18:33,711 INFO     group[f100u5] collecting user results 2/5
+app          2026-10-18 20:18:33,713 INFO     group[f100u5] collecting user results 3/5
+app          2026-10-18 20:18:33,713 INFO     group[f100u5] collecting user results 4/5
+app          2026-10-18 20:18:33,715 INFO     group[f100u5] collecting user results 5/5
+timeline     2026-10-18 20:18:33,716 WARNING  scenario ended after 110 ms, before fault windows finished: 0/1 completed, 0 started
+app          2026-10-18 20:18:33,716 INFO     group[f100u5] processing scenario 2/2
+app          2026-10-18 20:18:33,853 INFO     group[f100u5] collecting user results 1/5
+app          2026-10-18 20:18:33,854 INFO     group[f100u5] collecting user results 2/5
+app          2026-10-18 20:18:33,855 INFO     group[f100u5] collecting user results 3/5
+app          2026-10-18 20:18:33,855 INFO     group[f100u5] collecting user results 4/5
+app          2026-10-18 20:18:33,855 INFO     group[f100u5] collecting user results 5/5
+timeline     2026-10-18 20:18:33,856 WARNING  scenario ended after 138 ms, before fault windows finished: 0/1 completed, 0 started
+storage      2026-10-18 20:18:33,861 INFO     File /opt/app/resilience-tests/tf_smoke_06_missed_window/results_f100u5.csv saved to disk
+storage      2026-10-18 20:18:33,862 INFO     File /opt/app/resilience-tests/tf_smoke_06_missed_window/results.csv saved to disk

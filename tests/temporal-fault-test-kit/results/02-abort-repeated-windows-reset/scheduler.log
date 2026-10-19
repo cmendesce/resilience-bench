@@ -1,0 +1,47 @@
+time="2026-10-18T17:17:04-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+storage      2026-10-18 20:16:24,156 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/scenarios-original.json saved to disk
+app          2026-10-18 20:16:24,156 INFO     4 scenarios generated
+storage      2026-10-18 20:16:24,157 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/scenarios.json saved to disk
+app          2026-10-18 20:16:24,157 INFO     group[f100u5] starting processing 4 scenarios
+app          2026-10-18 20:16:24,157 INFO     group[f100u5] processing scenario 1/4
+timeline     2026-10-18 20:16:24,662 INFO     fault window 1/2 on at 502 ms
+timeline     2026-10-18 20:16:25,663 INFO     fault window 1/2 off at 1503 ms
+timeline     2026-10-18 20:16:26,662 INFO     fault window 2/2 on at 2502 ms
+timeline     2026-10-18 20:16:27,663 INFO     fault window 2/2 off at 3502 ms
+app          2026-10-18 20:16:34,214 INFO     group[f100u5] collecting user results 1/5
+app          2026-10-18 20:16:34,235 INFO     group[f100u5] collecting user results 2/5
+app          2026-10-18 20:16:34,250 INFO     group[f100u5] collecting user results 3/5
+app          2026-10-18 20:16:34,256 INFO     group[f100u5] collecting user results 4/5
+app          2026-10-18 20:16:34,271 INFO     group[f100u5] collecting user results 5/5
+app          2026-10-18 20:16:34,272 INFO     group[f100u5] processing scenario 2/4
+timeline     2026-10-18 20:16:34,775 INFO     fault window 1/2 on at 502 ms
+timeline     2026-10-18 20:16:35,775 INFO     fault window 1/2 off at 1502 ms
+timeline     2026-10-18 20:16:36,775 INFO     fault window 2/2 on at 2502 ms
+timeline     2026-10-18 20:16:37,775 INFO     fault window 2/2 off at 3502 ms
+app          2026-10-18 20:16:44,158 INFO     group[f100u5] collecting user results 1/5
+app          2026-10-18 20:16:44,237 INFO     group[f100u5] collecting user results 2/5
+app          2026-10-18 20:16:44,251 INFO     group[f100u5] collecting user results 3/5
+app          2026-10-18 20:16:44,258 INFO     group[f100u5] collecting user results 4/5
+app          2026-10-18 20:16:44,258 INFO     group[f100u5] collecting user results 5/5
+app          2026-10-18 20:16:44,259 INFO     group[f100u5] processing scenario 3/4
+timeline     2026-10-18 20:16:44,762 INFO     fault window 1/2 on at 502 ms
+timeline     2026-10-18 20:16:45,762 INFO     fault window 1/2 off at 1502 ms
+timeline     2026-10-18 20:16:46,764 INFO     fault window 2/2 on at 2503 ms
+timeline     2026-10-18 20:16:47,763 INFO     fault window 2/2 off at 3503 ms
+app          2026-10-18 20:16:54,485 INFO     group[f100u5] collecting user results 1/5
+app          2026-10-18 20:16:54,549 INFO     group[f100u5] collecting user results 2/5
+app          2026-10-18 20:16:54,629 INFO     group[f100u5] collecting user results 3/5
+app          2026-10-18 20:16:54,641 INFO     group[f100u5] collecting user results 4/5
+app          2026-10-18 20:16:54,656 INFO     group[f100u5] collecting user results 5/5
+app          2026-10-18 20:16:54,658 INFO     group[f100u5] processing scenario 4/4
+timeline     2026-10-18 20:16:55,161 INFO     fault window 1/2 on at 502 ms
+timeline     2026-10-18 20:16:56,161 INFO     fault window 1/2 off at 1502 ms
+timeline     2026-10-18 20:16:57,160 INFO     fault window 2/2 on at 2501 ms
+timeline     2026-10-18 20:16:58,160 INFO     fault window 2/2 off at 3502 ms
+app          2026-10-18 20:17:04,029 INFO     group[f100u5] collecting user results 1/5
+app          2026-10-18 20:17:04,092 INFO     group[f100u5] collecting user results 2/5
+app          2026-10-18 20:17:04,225 INFO     group[f100u5] collecting user results 3/5
+app          2026-10-18 20:17:04,227 INFO     group[f100u5] collecting user results 4/5
+app          2026-10-18 20:17:04,245 INFO     group[f100u5] collecting user results 5/5
+storage      2026-10-18 20:17:04,253 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/results_f100u5.csv saved to disk
+storage      2026-10-18 20:17:04,254 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/results.csv saved to disk
