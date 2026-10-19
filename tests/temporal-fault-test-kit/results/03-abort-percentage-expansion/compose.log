@@ -1,0 +1,66 @@
+time="2026-10-18T17:17:07-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Network resilience-bench_default Creating 
+ Network resilience-bench_default Created 
+ Container server Creating 
+ Container server Created 
+ Container polly Creating 
+ Container resilience4j Creating 
+ Container polly Created 
+ Container resilience4j Created 
+ Container scheduler Creating 
+ Container scheduler Created 
+Attaching to scheduler
+ Container server Starting 
+ Container server Started 
+ Container resilience4j Starting 
+ Container polly Starting 
+ Container resilience4j Started 
+ Container polly Started 
+ Container server Waiting 
+ Container server Healthy 
+ Container scheduler Starting 
+ Container scheduler Started 
+scheduler  | storage      2026-10-18 20:17:11,021 INFO     File /opt/app/resilience-tests/tf_smoke_03_abort_percentages/scenarios-original.json saved to disk
+scheduler  | app          2026-10-18 20:17:11,022 INFO     8 scenarios generated
+scheduler  | storage      2026-10-18 20:17:11,026 INFO     File /opt/app/resilience-tests/tf_smoke_03_abort_percentages/scenarios.json saved to disk
+scheduler  | app          2026-10-18 20:17:11,026 INFO     group[f50u5] starting processing 2 scenarios
+scheduler  | app          2026-10-18 20:17:11,026 INFO     group[f50u5] processing scenario 1/2
+scheduler  | timeline     2026-10-18 20:17:11,530 INFO     fault window 1/1 on at 502 ms
+scheduler  | timeline     2026-10-18 20:17:13,030 INFO     fault window 1/1 off at 2002 ms
+scheduler  | app          2026-10-18 20:17:19,349 INFO     group[f50u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:17:19,369 INFO     group[f50u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:17:19,373 INFO     group[f50u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:17:19,379 INFO     group[f50u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:17:19,384 INFO     group[f50u5] collecting user results 5/5
+scheduler  | app          2026-10-18 20:17:19,385 INFO     group[f50u5] processing scenario 2/2
+scheduler  | timeline     2026-10-18 20:17:19,888 INFO     fault window 1/1 on at 502 ms
+scheduler  | timeline     2026-10-18 20:17:21,389 INFO     fault window 1/1 off at 2003 ms
+scheduler  | app          2026-10-18 20:17:28,024 INFO     group[f50u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:17:28,212 INFO     group[f50u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:17:28,229 INFO     group[f50u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:17:28,234 INFO     group[f50u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:17:28,246 INFO     group[f50u5] collecting user results 5/5
+scheduler  | storage      2026-10-18 20:17:28,252 INFO     File /opt/app/resilience-tests/tf_smoke_03_abort_percentages/results_f50u5.csv saved to disk
+scheduler  | app          2026-10-18 20:17:28,252 INFO     group[f100u5] starting processing 2 scenarios
+scheduler  | app          2026-10-18 20:17:28,252 INFO     group[f100u5] processing scenario 1/2
+scheduler  | timeline     2026-10-18 20:17:28,755 INFO     fault window 1/1 on at 502 ms
+scheduler  | timeline     2026-10-18 20:17:30,255 INFO     fault window 1/1 off at 2002 ms
+scheduler  | app          2026-10-18 20:17:37,608 INFO     group[f100u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:17:37,611 INFO     group[f100u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:17:37,629 INFO     group[f100u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:17:37,635 INFO     group[f100u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:17:37,647 INFO     group[f100u5] collecting user results 5/5
+scheduler  | app          2026-10-18 20:17:37,649 INFO     group[f100u5] processing scenario 2/2
+scheduler  | timeline     2026-10-18 20:17:38,151 INFO     fault window 1/1 on at 502 ms
+scheduler  | timeline     2026-10-18 20:17:39,651 INFO     fault window 1/1 off at 2001 ms
+scheduler  | app          2026-10-18 20:17:46,615 INFO     group[f100u5] collecting user results 1/5
+scheduler  | app          2026-10-18 20:17:46,633 INFO     group[f100u5] collecting user results 2/5
+scheduler  | app          2026-10-18 20:17:46,692 INFO     group[f100u5] collecting user results 3/5
+scheduler  | app          2026-10-18 20:17:46,695 INFO     group[f100u5] collecting user results 4/5
+scheduler  | app          2026-10-18 20:17:46,697 INFO     group[f100u5] collecting user results 5/5
+scheduler  | storage      2026-10-18 20:17:46,703 INFO     File /opt/app/resilience-tests/tf_smoke_03_abort_percentages/results_f100u5.csv saved to disk
+scheduler  | storage      2026-10-18 20:17:46,704 INFO     File /opt/app/resilience-tests/tf_smoke_03_abort_percentages/results.csv saved to disk
+[Kscheduler exited with code 0
+ Compose Stopping Aborting on container exit...
+ Container scheduler Stopping 
+ Container scheduler Stopped 

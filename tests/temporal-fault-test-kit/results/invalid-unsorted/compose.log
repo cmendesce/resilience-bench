@@ -1,0 +1,35 @@
+time="2026-10-18T17:18:47-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Network resilience-bench_default Creating 
+ Network resilience-bench_default Created 
+ Container server Creating 
+ Container server Created 
+ Container resilience4j Creating 
+ Container polly Creating 
+ Container polly Created 
+ Container resilience4j Created 
+ Container scheduler Creating 
+ Container scheduler Created 
+Attaching to scheduler
+ Container server Starting 
+ Container server Started 
+ Container polly Starting 
+ Container resilience4j Starting 
+ Container polly Started 
+ Container resilience4j Started 
+ Container server Waiting 
+ Container server Healthy 
+ Container scheduler Starting 
+ Container scheduler Started 
+scheduler  | Traceback (most recent call last):
+scheduler  |   File "/opt/app/app.py", line 179, in <module>
+scheduler  |     main()
+scheduler  |   File "/opt/app/app.py", line 75, in main
+scheduler  |     validate_windows(conf['fault']['windows'])
+scheduler  |   File "/opt/app/fault_timeline.py", line 23, in validate_windows
+scheduler  |     raise ValueError(f'fault.windows[{idx}] starts before the previous window ends')
+scheduler  | ValueError: fault.windows[1] starts before the previous window ends
+[Kscheduler exited with code 1
+ Compose Stopping Aborting on container exit...
+ Container scheduler Stopping 
+ Container scheduler Stopped 
+

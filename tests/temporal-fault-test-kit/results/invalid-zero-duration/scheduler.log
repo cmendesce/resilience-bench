@@ -1,0 +1,9 @@
+time="2026-10-18T17:18:57-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Traceback (most recent call last):
+  File "/opt/app/app.py", line 179, in <module>
+    main()
+  File "/opt/app/app.py", line 75, in main
+    validate_windows(conf['fault']['windows'])
+  File "/opt/app/fault_timeline.py", line 21, in validate_windows
+    raise ValueError(f'fault.windows[{idx}].duration must be > 0')
+ValueError: fault.windows[0].duration must be > 0
