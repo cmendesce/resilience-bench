@@ -1,5 +1,5 @@
-time="2026-11-03T15:08:42-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
-time="2026-11-03T15:08:42-03:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+time="2026-11-03T19:07:58-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+time="2026-11-03T19:07:58-03:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
  Image resilience-bench-server Building 
  Image resilience-bench-server Building 
 Sending build context to Docker daemon  1.436kB
@@ -53,32 +53,32 @@ Successfully tagged resilience-bench-server:latest
  Image resilience-bench-resilience4j Building 
 Sending build context to Docker daemon  4.949kB
 Sending build context to Docker daemon  4.771kB
-Step 1/9 : FROM maven:3.8.3-openjdk-11-slim AS build
 Step 1/17 : FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
- ---> a4c3091b7de4
-Step 2/9 : COPY src /usr/src/app/src
+Step 1/9 : FROM maven:3.8.3-openjdk-11-slim AS build
  ---> e70c493f8af7
 Step 2/17 : WORKDIR /app
+ ---> a4c3091b7de4
+Step 2/9 : COPY src /usr/src/app/src
  ---> Using cache
  ---> 9203632a37d7
 Step 3/17 : EXPOSE 80
  ---> Using cache
- ---> 28d72e2c7a72
-Step 4/17 : FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build ---> Using cache
  ---> 936f19fa9260
 Step 3/9 : COPY pom.xml /usr/src/app
-
+ ---> Using cache
+ ---> 28d72e2c7a72
+Step 4/17 : FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
  ---> Using cache
  ---> 7c9407abfce7
 Step 4/9 : RUN mvn -f /usr/src/app/pom.xml clean package
  ---> c8fdd06e430d
 Step 5/17 : WORKDIR /src
  ---> Using cache
- ---> afe5cf722dec
-Step 6/17 : COPY ["ResiliencePatterns.Polly.csproj", "."]
- ---> Using cache
  ---> adcb6767ca58
 Step 5/9 : FROM eclipse-temurin:11-jre
+ ---> Using cache
+ ---> afe5cf722dec
+Step 6/17 : COPY ["ResiliencePatterns.Polly.csproj", "."]
  ---> Using cache
  ---> 1e6de2b7dacd
 Step 7/17 : RUN dotnet restore "./ResiliencePatterns.Polly.csproj"
@@ -91,51 +91,51 @@ Step 8/17 : COPY . .
  ---> bbdec81bdfef
 Step 9/17 : WORKDIR "/src/."
  ---> Using cache
+ ---> Using cache
  ---> 96bf24de1cb8
 Step 10/17 : RUN dotnet build "ResiliencePatterns.Polly.csproj" -c Release -o /app/build
+ ---> 30d460af4bb4
+Step 7/9 : EXPOSE 80
  ---> Using cache
  ---> 9cb0bbe01893
 Step 11/17 : FROM build AS publish
+ ---> Using cache
+ ---> d3149716862d
+Step 8/9 : ENTRYPOINT ["java","-jar","/usr/app/resilience4j-0.0.1-SNAPSHOT.jar"]
  ---> 9cb0bbe01893
 Step 12/17 : RUN dotnet publish "ResiliencePatterns.Polly.csproj" -c Release -o /app/publish
  ---> Using cache
+ ---> 6520e030d15f
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
  ---> c0f4ac2b29a0
 Step 13/17 : FROM base AS final
+ ---> Using cache
+ ---> a6ed8a912b34
+Successfully built a6ed8a912b34
  ---> 28d72e2c7a72
 Step 14/17 : WORKDIR /app
  ---> Using cache
  ---> 577805ce2c21
 Step 15/17 : COPY --from=publish /app/publish .
- ---> Using cache
+Successfully tagged resilience-bench-resilience4j:latest
+ Image resilience-bench-resilience4j Built 
+ Image resilience-bench-resilience4j Built 
  ---> Using cache
  ---> 4c3e6062a90a
 Step 16/17 : ENTRYPOINT ["dotnet", "ResiliencePatterns.Polly.dll"]
- ---> 30d460af4bb4
-Step 7/9 : EXPOSE 80
- ---> Using cache
- ---> d3149716862d
-Step 8/9 : ENTRYPOINT ["java","-jar","/usr/app/resilience4j-0.0.1-SNAPSHOT.jar"]
  ---> Using cache
  ---> 7d7316bd0c12
 Step 17/17 : LABEL com.docker.compose.image.builder=classic
  ---> Using cache
  ---> af39c91dfafd
- ---> Using cache
 Successfully built af39c91dfafd
- ---> 6520e030d15f
-Step 9/9 : LABEL com.docker.compose.image.builder=classic
 Successfully tagged resilience-bench-polly:latest
  Image resilience-bench-polly Built 
  Image resilience-bench-polly Built 
- ---> Using cache
- ---> a6ed8a912b34
-Successfully built a6ed8a912b34
-Successfully tagged resilience-bench-resilience4j:latest
- Image resilience-bench-resilience4j Built 
- Image resilience-bench-resilience4j Built 
  Image resilience-bench-scheduler Building 
  Image resilience-bench-scheduler Building 
-Sending build context to Docker daemon  22.95kB
+Sending build context to Docker daemon  22.94kB
 Step 1/7 : FROM python:3.9
  ---> da5aee29682d
 Step 2/7 : WORKDIR /opt/app
@@ -148,16 +148,15 @@ Step 4/7 : RUN pip install -r requirements.txt
  ---> Using cache
  ---> 7d2e5556bc0e
 Step 5/7 : ADD . .
- ---> 4a01ee7a6fa8
+ ---> Using cache
+ ---> 3465b273d600
 Step 6/7 : CMD ["python", "-u", "app.py"]
- ---> Running in f42559611940
- ---> Removed intermediate container f42559611940
- ---> 587a7de7908c
+ ---> Using cache
+ ---> 24d07ccb58ef
 Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Running in 2c7f7649cbf0
- ---> Removed intermediate container 2c7f7649cbf0
- ---> ae6290419253
-Successfully built ae6290419253
+ ---> Using cache
+ ---> 977d2a4c3e00
+Successfully built 977d2a4c3e00
 Successfully tagged resilience-bench-scheduler:latest
  Image resilience-bench-scheduler Built 
  Image resilience-bench-scheduler Built 
@@ -167,17 +166,17 @@ Successfully tagged resilience-bench-scheduler:latest
  Volume resilience-bench_envoy-logs Created 
  Container server Creating 
  Container server Created 
- Container polly Creating 
  Container resilience4j Creating 
- Container resilience4j Created 
+ Container polly Creating 
  Container polly Created 
+ Container resilience4j Created 
  Container scheduler Creating 
  Container scheduler Created 
 Attaching to scheduler
  Container server Starting 
  Container server Started 
- Container resilience4j Starting 
  Container polly Starting 
+ Container resilience4j Starting 
  Container polly Started 
  Container resilience4j Started 
  Container server Waiting 

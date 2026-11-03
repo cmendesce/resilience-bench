@@ -1,5 +1,5 @@
-time="2026-11-03T15:09:54-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
-time="2026-11-03T15:09:54-03:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+time="2026-11-03T19:03:18-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+time="2026-11-03T19:03:19-03:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
  Image resilience-bench-server Building 
  Image resilience-bench-server Building 
 Sending build context to Docker daemon  1.436kB
@@ -79,11 +79,11 @@ Step 5/9 : FROM eclipse-temurin:11-jre
  ---> Using cache
  ---> afe5cf722dec
 Step 6/17 : COPY ["ResiliencePatterns.Polly.csproj", "."]
+ ---> ad419849e59e
+Step 6/9 : COPY --from=build /usr/src/app/target/resilience4j-0.0.1-SNAPSHOT.jar /usr/app/resilience4j-0.0.1-SNAPSHOT.jar
  ---> Using cache
  ---> 1e6de2b7dacd
 Step 7/17 : RUN dotnet restore "./ResiliencePatterns.Polly.csproj"
- ---> ad419849e59e
-Step 6/9 : COPY --from=build /usr/src/app/target/resilience4j-0.0.1-SNAPSHOT.jar /usr/app/resilience4j-0.0.1-SNAPSHOT.jar
  ---> Using cache
  ---> 2bbc75cb9834
 Step 8/17 : COPY . .
@@ -91,36 +91,36 @@ Step 8/17 : COPY . .
  ---> bbdec81bdfef
 Step 9/17 : WORKDIR "/src/."
  ---> Using cache
- ---> Using cache
- ---> 96bf24de1cb8
-Step 10/17 : RUN dotnet build "ResiliencePatterns.Polly.csproj" -c Release -o /app/build
  ---> 30d460af4bb4
 Step 7/9 : EXPOSE 80
  ---> Using cache
- ---> 9cb0bbe01893
-Step 11/17 : FROM build AS publish
+ ---> 96bf24de1cb8
+Step 10/17 : RUN dotnet build "ResiliencePatterns.Polly.csproj" -c Release -o /app/build
  ---> Using cache
  ---> d3149716862d
 Step 8/9 : ENTRYPOINT ["java","-jar","/usr/app/resilience4j-0.0.1-SNAPSHOT.jar"]
- ---> 9cb0bbe01893
-Step 12/17 : RUN dotnet publish "ResiliencePatterns.Polly.csproj" -c Release -o /app/publish
  ---> Using cache
+ ---> 9cb0bbe01893
+Step 11/17 : FROM build AS publish
+ ---> 9cb0bbe01893
+Step 12/17 : RUN dotnet publish "ResiliencePatterns.Polly.csproj" -c Release -o /app/publish ---> Using cache
  ---> 6520e030d15f
 Step 9/9 : LABEL com.docker.compose.image.builder=classic
+
+ ---> Using cache
+ ---> a6ed8a912b34
  ---> Using cache
  ---> c0f4ac2b29a0
 Step 13/17 : FROM base AS final
- ---> Using cache
- ---> a6ed8a912b34
+Successfully built a6ed8a912b34
  ---> 28d72e2c7a72
 Step 14/17 : WORKDIR /app
-Successfully built a6ed8a912b34
- ---> Using cache
- ---> 577805ce2c21
-Step 15/17 : COPY --from=publish /app/publish .
 Successfully tagged resilience-bench-resilience4j:latest
  Image resilience-bench-resilience4j Built 
  Image resilience-bench-resilience4j Built 
+ ---> Using cache
+ ---> 577805ce2c21
+Step 15/17 : COPY --from=publish /app/publish .
  ---> Using cache
  ---> 4c3e6062a90a
 Step 16/17 : ENTRYPOINT ["dotnet", "ResiliencePatterns.Polly.dll"]
@@ -135,7 +135,7 @@ Successfully tagged resilience-bench-polly:latest
  Image resilience-bench-polly Built 
  Image resilience-bench-scheduler Building 
  Image resilience-bench-scheduler Building 
-Sending build context to Docker daemon  22.95kB
+Sending build context to Docker daemon  22.94kB
 Step 1/7 : FROM python:3.9
  ---> da5aee29682d
 Step 2/7 : WORKDIR /opt/app
@@ -149,14 +149,14 @@ Step 4/7 : RUN pip install -r requirements.txt
  ---> 7d2e5556bc0e
 Step 5/7 : ADD . .
  ---> Using cache
- ---> 4a01ee7a6fa8
+ ---> 3465b273d600
 Step 6/7 : CMD ["python", "-u", "app.py"]
  ---> Using cache
- ---> 587a7de7908c
+ ---> 24d07ccb58ef
 Step 7/7 : LABEL com.docker.compose.image.builder=classic
  ---> Using cache
- ---> ae6290419253
-Successfully built ae6290419253
+ ---> 977d2a4c3e00
+Successfully built 977d2a4c3e00
 Successfully tagged resilience-bench-scheduler:latest
  Image resilience-bench-scheduler Built 
  Image resilience-bench-scheduler Built 
@@ -183,53 +183,53 @@ Attaching to scheduler
  Container server Healthy 
  Container scheduler Starting 
  Container scheduler Started 
-scheduler  | storage      2026-11-03 18:09:58,207 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/scenarios-original.json saved to disk
-scheduler  | app          2026-11-03 18:09:58,208 INFO     4 scenarios generated
-scheduler  | storage      2026-11-03 18:09:58,209 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/scenarios.json saved to disk
-scheduler  | app          2026-11-03 18:09:59,212 INFO     group[f100u5] starting processing 4 scenarios
-scheduler  | app          2026-11-03 18:09:59,212 INFO     group[f100u5] processing scenario 1/4
-scheduler  | timeline     2026-11-03 18:09:59,723 INFO     fault window 1 (1/2 in the list) on at 503 ms
-scheduler  | timeline     2026-11-03 18:10:00,723 INFO     fault window 1 (1/2 in the list) off at 1503 ms
-scheduler  | timeline     2026-11-03 18:10:01,724 INFO     fault window 2 (2/2 in the list) on at 2504 ms
-scheduler  | timeline     2026-11-03 18:10:02,723 INFO     fault window 2 (2/2 in the list) off at 3503 ms
-scheduler  | app          2026-11-03 18:10:10,002 INFO     group[f100u5] collecting user results 1/5
-scheduler  | app          2026-11-03 18:10:10,002 INFO     group[f100u5] collecting user results 2/5
-scheduler  | app          2026-11-03 18:10:10,003 INFO     group[f100u5] collecting user results 3/5
-scheduler  | app          2026-11-03 18:10:10,004 INFO     group[f100u5] collecting user results 4/5
-scheduler  | app          2026-11-03 18:10:10,019 INFO     group[f100u5] collecting user results 5/5
-scheduler  | app          2026-11-03 18:10:10,022 INFO     group[f100u5] processing scenario 2/4
-scheduler  | timeline     2026-11-03 18:10:10,526 INFO     fault window 1 (1/2 in the list) on at 503 ms
-scheduler  | timeline     2026-11-03 18:10:11,528 INFO     fault window 1 (1/2 in the list) off at 1505 ms
-scheduler  | timeline     2026-11-03 18:10:12,526 INFO     fault window 2 (2/2 in the list) on at 2503 ms
-scheduler  | timeline     2026-11-03 18:10:13,528 INFO     fault window 2 (2/2 in the list) off at 3505 ms
-scheduler  | app          2026-11-03 18:10:19,975 INFO     group[f100u5] collecting user results 1/5
-scheduler  | app          2026-11-03 18:10:19,990 INFO     group[f100u5] collecting user results 2/5
-scheduler  | app          2026-11-03 18:10:19,992 INFO     group[f100u5] collecting user results 3/5
-scheduler  | app          2026-11-03 18:10:20,001 INFO     group[f100u5] collecting user results 4/5
-scheduler  | app          2026-11-03 18:10:20,006 INFO     group[f100u5] collecting user results 5/5
-scheduler  | app          2026-11-03 18:10:20,008 INFO     group[f100u5] processing scenario 3/4
-scheduler  | timeline     2026-11-03 18:10:20,523 INFO     fault window 1 (1/2 in the list) on at 514 ms
-scheduler  | timeline     2026-11-03 18:10:21,511 INFO     fault window 1 (1/2 in the list) off at 1502 ms
-scheduler  | timeline     2026-11-03 18:10:22,514 INFO     fault window 2 (2/2 in the list) on at 2505 ms
-scheduler  | timeline     2026-11-03 18:10:23,513 INFO     fault window 2 (2/2 in the list) off at 3505 ms
-scheduler  | app          2026-11-03 18:10:30,970 INFO     group[f100u5] collecting user results 1/5
-scheduler  | app          2026-11-03 18:10:31,073 INFO     group[f100u5] collecting user results 2/5
-scheduler  | app          2026-11-03 18:10:31,166 INFO     group[f100u5] collecting user results 3/5
-scheduler  | app          2026-11-03 18:10:31,167 INFO     group[f100u5] collecting user results 4/5
-scheduler  | app          2026-11-03 18:10:31,181 INFO     group[f100u5] collecting user results 5/5
-scheduler  | app          2026-11-03 18:10:31,184 INFO     group[f100u5] processing scenario 4/4
-scheduler  | timeline     2026-11-03 18:10:31,689 INFO     fault window 1 (1/2 in the list) on at 504 ms
-scheduler  | timeline     2026-11-03 18:10:32,693 INFO     fault window 1 (1/2 in the list) off at 1509 ms
-scheduler  | timeline     2026-11-03 18:10:33,710 INFO     fault window 2 (2/2 in the list) on at 2525 ms
-scheduler  | timeline     2026-11-03 18:10:34,689 INFO     fault window 2 (2/2 in the list) off at 3504 ms
-scheduler  | app          2026-11-03 18:10:42,508 INFO     group[f100u5] collecting user results 1/5
-scheduler  | app          2026-11-03 18:10:42,550 INFO     group[f100u5] collecting user results 2/5
-scheduler  | app          2026-11-03 18:10:42,561 INFO     group[f100u5] collecting user results 3/5
-scheduler  | app          2026-11-03 18:10:42,562 INFO     group[f100u5] collecting user results 4/5
-scheduler  | app          2026-11-03 18:10:42,581 INFO     group[f100u5] collecting user results 5/5
-scheduler  | storage      2026-11-03 18:10:42,604 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/results_f100u5.csv saved to disk
-scheduler  | storage      2026-11-03 18:10:44,693 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/accesslog_f100u5.log saved to disk
-scheduler  | storage      2026-11-03 18:10:44,698 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/results.csv saved to disk
+scheduler  | storage      2026-11-03 22:03:24,159 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/scenarios-original.json saved to disk
+scheduler  | app          2026-11-03 22:03:24,160 INFO     4 scenarios generated
+scheduler  | storage      2026-11-03 22:03:24,161 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/scenarios.json saved to disk
+scheduler  | app          2026-11-03 22:03:25,165 INFO     group[f100u5] starting processing 4 scenarios
+scheduler  | app          2026-11-03 22:03:25,165 INFO     group[f100u5] processing scenario 1/4
+scheduler  | timeline     2026-11-03 22:03:25,672 INFO     fault window 1 (1/2 in the list) on at 503 ms
+scheduler  | timeline     2026-11-03 22:03:26,672 INFO     fault window 1 (1/2 in the list) off at 1503 ms
+scheduler  | timeline     2026-11-03 22:03:27,672 INFO     fault window 2 (2/2 in the list) on at 2503 ms
+scheduler  | timeline     2026-11-03 22:03:28,673 INFO     fault window 2 (2/2 in the list) off at 3503 ms
+scheduler  | app          2026-11-03 22:03:39,773 INFO     group[f100u5] collecting user results 1/5
+scheduler  | app          2026-11-03 22:03:39,862 INFO     group[f100u5] collecting user results 2/5
+scheduler  | app          2026-11-03 22:03:39,916 INFO     group[f100u5] collecting user results 3/5
+scheduler  | app          2026-11-03 22:03:39,933 INFO     group[f100u5] collecting user results 4/5
+scheduler  | app          2026-11-03 22:03:39,936 INFO     group[f100u5] collecting user results 5/5
+scheduler  | app          2026-11-03 22:03:39,948 INFO     group[f100u5] processing scenario 2/4
+scheduler  | timeline     2026-11-03 22:03:40,455 INFO     fault window 1 (1/2 in the list) on at 505 ms
+scheduler  | timeline     2026-11-03 22:03:41,452 INFO     fault window 1 (1/2 in the list) off at 1502 ms
+scheduler  | timeline     2026-11-03 22:03:42,453 INFO     fault window 2 (2/2 in the list) on at 2503 ms
+scheduler  | timeline     2026-11-03 22:03:43,452 INFO     fault window 2 (2/2 in the list) off at 3502 ms
+scheduler  | app          2026-11-03 22:03:56,485 INFO     group[f100u5] collecting user results 1/5
+scheduler  | app          2026-11-03 22:03:56,855 INFO     group[f100u5] collecting user results 2/5
+scheduler  | app          2026-11-03 22:03:57,113 INFO     group[f100u5] collecting user results 3/5
+scheduler  | app          2026-11-03 22:03:57,114 INFO     group[f100u5] collecting user results 4/5
+scheduler  | app          2026-11-03 22:03:57,197 INFO     group[f100u5] collecting user results 5/5
+scheduler  | app          2026-11-03 22:03:57,204 INFO     group[f100u5] processing scenario 3/4
+scheduler  | timeline     2026-11-03 22:03:57,724 INFO     fault window 1 (1/2 in the list) on at 508 ms
+scheduler  | timeline     2026-11-03 22:03:58,725 INFO     fault window 1 (1/2 in the list) off at 1509 ms
+scheduler  | timeline     2026-11-03 22:03:59,724 INFO     fault window 2 (2/2 in the list) on at 2508 ms
+scheduler  | timeline     2026-11-03 22:04:00,732 INFO     fault window 2 (2/2 in the list) off at 3516 ms
+scheduler  | app          2026-11-03 22:04:15,200 INFO     group[f100u5] collecting user results 1/5
+scheduler  | app          2026-11-03 22:04:15,213 INFO     group[f100u5] collecting user results 2/5
+scheduler  | app          2026-11-03 22:04:15,437 INFO     group[f100u5] collecting user results 3/5
+scheduler  | app          2026-11-03 22:04:15,482 INFO     group[f100u5] collecting user results 4/5
+scheduler  | app          2026-11-03 22:04:15,484 INFO     group[f100u5] collecting user results 5/5
+scheduler  | app          2026-11-03 22:04:15,492 INFO     group[f100u5] processing scenario 4/4
+scheduler  | timeline     2026-11-03 22:04:15,998 INFO     fault window 1 (1/2 in the list) on at 502 ms
+scheduler  | timeline     2026-11-03 22:04:17,002 INFO     fault window 1 (1/2 in the list) off at 1506 ms
+scheduler  | timeline     2026-11-03 22:04:18,001 INFO     fault window 2 (2/2 in the list) on at 2505 ms
+scheduler  | timeline     2026-11-03 22:04:18,998 INFO     fault window 2 (2/2 in the list) off at 3502 ms
+scheduler  | app          2026-11-03 22:04:27,659 INFO     group[f100u5] collecting user results 1/5
+scheduler  | app          2026-11-03 22:04:27,747 INFO     group[f100u5] collecting user results 2/5
+scheduler  | app          2026-11-03 22:04:27,802 INFO     group[f100u5] collecting user results 3/5
+scheduler  | app          2026-11-03 22:04:27,805 INFO     group[f100u5] collecting user results 4/5
+scheduler  | app          2026-11-03 22:04:27,816 INFO     group[f100u5] collecting user results 5/5
+scheduler  | storage      2026-11-03 22:04:27,888 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/results_f100u5.csv saved to disk
+scheduler  | storage      2026-11-03 22:04:30,119 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/accesslog_f100u5.log saved to disk
+scheduler  | storage      2026-11-03 22:04:30,186 INFO     File /opt/app/resilience-tests/tf_smoke_02_abort_repeat/results.csv saved to disk
 [Kscheduler exited with code 0
  Compose Stopping Aborting on container exit...
  Container scheduler Stopping 

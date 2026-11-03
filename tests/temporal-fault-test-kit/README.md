@@ -30,7 +30,7 @@ The kit ships a Compose override, [`docker-compose.yaml`](./docker-compose.yaml)
    ```
 
    Naming the `scheduler` service starts only it and its dependencies (server, Polly, Resilience4j), so the Cockatiel client is not built. Use `docker-compose` instead of `docker compose` if that is the installed CLI.
-2. Results are written to `tests/temporal-fault-test-kit/results/<testId>/` (ignored by git). Inspect them together with the scheduler logs and Envoy access logs.
+2. Results are written to `tests/temporal-fault-test-kit/results/<testId>/` (ignored by git). Inspect them together with the scheduler logs and Envoy access logs. Copy each run's results, `scheduler.log` and `exit_code` into `results/<config name>/`, as in the committed results, and run `python3 tests/temporal-fault-test-kit/check_results.py` to check them against the pass criteria below.
 3. Tear the environment down before the next config, so Envoy starts with a clean runtime:
 
    ```sh

@@ -1,4 +1,4 @@
-time="2026-11-03T15:09:04-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+time="2026-11-03T19:08:07-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
 Traceback (most recent call last):
   File "/opt/app/app.py", line 186, in <module>
     main()
