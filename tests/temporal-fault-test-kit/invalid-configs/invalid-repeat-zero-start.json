@@ -1,5 +1,5 @@
 {
-  "testId": "tf_smoke_invalid_unsorted",
+  "testId": "tf_smoke_invalid_repeat_zero_start",
   "users": [
     5
   ],
@@ -15,14 +15,11 @@
     ],
     "windows": [
       {
-        "start": 2000,
-        "duration": 100
-      },
-      {
-        "start": 1000,
-        "duration": 100
+        "start": 0,
+        "duration": 1000
       }
-    ]
+    ],
+    "repeat": true
   },
   "clientSpecs": [
     {

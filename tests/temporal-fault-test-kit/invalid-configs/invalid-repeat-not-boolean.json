@@ -1,5 +1,5 @@
 {
-  "testId": "tf_smoke_invalid_overlap",
+  "testId": "tf_smoke_invalid_repeat_not_boolean",
   "users": [
     5
   ],
@@ -17,12 +17,9 @@
       {
         "start": 1000,
         "duration": 1000
-      },
-      {
-        "start": 1500,
-        "duration": 100
       }
-    ]
+    ],
+    "repeat": "yes"
   },
   "clientSpecs": [
     {
