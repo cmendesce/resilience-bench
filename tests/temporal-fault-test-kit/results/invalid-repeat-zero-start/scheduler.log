@@ -1,0 +1,9 @@
+time="2026-11-03T19:08:12-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Traceback (most recent call last):
+  File "/opt/app/app.py", line 186, in <module>
+    main()
+  File "/opt/app/app.py", line 76, in main
+    validate_windows(conf['fault']['windows'], conf['fault'].get('repeat', False))
+  File "/opt/app/fault_timeline.py", line 25, in validate_windows
+    raise ValueError('fault.repeat needs at least one window with start > 0, otherwise the fault never turns off')
+ValueError: fault.repeat needs at least one window with start > 0, otherwise the fault never turns off

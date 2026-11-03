@@ -1,0 +1,24 @@
+time="2026-11-03T19:06:42-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+storage      2026-11-03 22:06:17,030 INFO     File /opt/app/resilience-tests/tf_smoke_04_delay_boundary/scenarios-original.json saved to disk
+app          2026-11-03 22:06:17,030 INFO     2 scenarios generated
+storage      2026-11-03 22:06:17,031 INFO     File /opt/app/resilience-tests/tf_smoke_04_delay_boundary/scenarios.json saved to disk
+app          2026-11-03 22:06:18,032 INFO     group[f100u5] starting processing 2 scenarios
+app          2026-11-03 22:06:18,032 INFO     group[f100u5] processing scenario 1/2
+timeline     2026-11-03 22:06:18,538 INFO     fault window 1 (1/1 in the list) on at 502 ms
+timeline     2026-11-03 22:06:19,039 INFO     fault window 1 (1/1 in the list) off at 1004 ms
+app          2026-11-03 22:06:28,631 INFO     group[f100u5] collecting user results 1/5
+app          2026-11-03 22:06:28,638 INFO     group[f100u5] collecting user results 2/5
+app          2026-11-03 22:06:28,652 INFO     group[f100u5] collecting user results 3/5
+app          2026-11-03 22:06:28,657 INFO     group[f100u5] collecting user results 4/5
+app          2026-11-03 22:06:28,658 INFO     group[f100u5] collecting user results 5/5
+app          2026-11-03 22:06:28,660 INFO     group[f100u5] processing scenario 2/2
+timeline     2026-11-03 22:06:29,163 INFO     fault window 1 (1/1 in the list) on at 502 ms
+timeline     2026-11-03 22:06:29,665 INFO     fault window 1 (1/1 in the list) off at 1005 ms
+app          2026-11-03 22:06:39,718 INFO     group[f100u5] collecting user results 1/5
+app          2026-11-03 22:06:39,824 INFO     group[f100u5] collecting user results 2/5
+app          2026-11-03 22:06:39,869 INFO     group[f100u5] collecting user results 3/5
+app          2026-11-03 22:06:39,941 INFO     group[f100u5] collecting user results 4/5
+app          2026-11-03 22:06:39,948 INFO     group[f100u5] collecting user results 5/5
+storage      2026-11-03 22:06:39,955 INFO     File /opt/app/resilience-tests/tf_smoke_04_delay_boundary/results_f100u5.csv saved to disk
+storage      2026-11-03 22:06:41,990 INFO     File /opt/app/resilience-tests/tf_smoke_04_delay_boundary/accesslog_f100u5.log saved to disk
+storage      2026-11-03 22:06:41,993 INFO     File /opt/app/resilience-tests/tf_smoke_04_delay_boundary/results.csv saved to disk

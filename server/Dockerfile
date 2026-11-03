@@ -17,6 +17,8 @@ RUN python3 -m venv /opt/httpbin && \
     /opt/httpbin/bin/pip install --no-cache-dir httpbin==0.10.4 gunicorn==23.0.0 gevent==24.11.1
 ENV PATH="/opt/httpbin/bin:${PATH}"
 
+RUN mkdir -p /var/log/envoy
+
 ADD envoy.yaml /etc/envoy/envoy.yaml
 ADD supervisord.conf /etc/supervisor/conf.d/default.conf
 

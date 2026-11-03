@@ -1,0 +1,39 @@
+time="2026-11-03T19:07:00-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+storage      2026-11-03 22:06:47,145 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/scenarios-original.json saved to disk
+app          2026-11-03 22:06:47,145 INFO     8 scenarios generated
+storage      2026-11-03 22:06:47,146 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/scenarios.json saved to disk
+app          2026-11-03 22:06:48,150 INFO     group[f0u5] starting processing 2 scenarios
+app          2026-11-03 22:06:48,150 INFO     group[f0u5] processing scenario 1/2
+envoy        2026-11-03 22:06:48,161 INFO     Disabled delay fault injection in envoy
+envoy        2026-11-03 22:06:48,165 INFO     Enabled 503 abort fault injection in envoy for 0% of requests
+app          2026-11-03 22:06:49,994 INFO     group[f0u5] collecting user results 1/5
+app          2026-11-03 22:06:50,009 INFO     group[f0u5] collecting user results 2/5
+app          2026-11-03 22:06:50,010 INFO     group[f0u5] collecting user results 3/5
+app          2026-11-03 22:06:50,011 INFO     group[f0u5] collecting user results 4/5
+app          2026-11-03 22:06:50,014 INFO     group[f0u5] collecting user results 5/5
+app          2026-11-03 22:06:50,014 INFO     group[f0u5] processing scenario 2/2
+app          2026-11-03 22:06:52,090 INFO     group[f0u5] collecting user results 1/5
+app          2026-11-03 22:06:52,092 INFO     group[f0u5] collecting user results 2/5
+app          2026-11-03 22:06:52,092 INFO     group[f0u5] collecting user results 3/5
+app          2026-11-03 22:06:52,093 INFO     group[f0u5] collecting user results 4/5
+app          2026-11-03 22:06:52,102 INFO     group[f0u5] collecting user results 5/5
+storage      2026-11-03 22:06:52,104 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/results_f0u5.csv saved to disk
+storage      2026-11-03 22:06:54,121 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/accesslog_f0u5.log saved to disk
+app          2026-11-03 22:06:54,122 INFO     group[f50u5] starting processing 2 scenarios
+app          2026-11-03 22:06:54,122 INFO     group[f50u5] processing scenario 1/2
+envoy        2026-11-03 22:06:54,126 INFO     Disabled delay fault injection in envoy
+envoy        2026-11-03 22:06:54,129 INFO     Enabled 503 abort fault injection in envoy for 50% of requests
+app          2026-11-03 22:06:55,970 INFO     group[f50u5] collecting user results 1/5
+app          2026-11-03 22:06:55,974 INFO     group[f50u5] collecting user results 2/5
+app          2026-11-03 22:06:55,978 INFO     group[f50u5] collecting user results 3/5
+app          2026-11-03 22:06:55,981 INFO     group[f50u5] collecting user results 4/5
+app          2026-11-03 22:06:56,003 INFO     group[f50u5] collecting user results 5/5
+app          2026-11-03 22:06:56,004 INFO     group[f50u5] processing scenario 2/2
+app          2026-11-03 22:06:57,963 INFO     group[f50u5] collecting user results 1/5
+app          2026-11-03 22:06:57,964 INFO     group[f50u5] collecting user results 2/5
+app          2026-11-03 22:06:57,978 INFO     group[f50u5] collecting user results 3/5
+app          2026-11-03 22:06:57,984 INFO     group[f50u5] collecting user results 4/5
+app          2026-11-03 22:06:57,987 INFO     group[f50u5] collecting user results 5/5
+storage      2026-11-03 22:06:57,990 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/results_f50u5.csv saved to disk
+storage      2026-11-03 22:07:00,010 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/accesslog_f50u5.log saved to disk
+storage      2026-11-03 22:07:00,016 INFO     File /opt/app/resilience-tests/tf_smoke_05_bernoulli_regression/results.csv saved to disk

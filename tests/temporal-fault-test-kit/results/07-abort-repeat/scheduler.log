@@ -1,0 +1,52 @@
+time="2026-11-03T19:07:51-03:00" level=warning msg="/Users/carlosmendes/gh/cmendesce/resilience-bench/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+storage      2026-11-03 22:07:14,126 INFO     File /opt/app/resilience-tests/tf_smoke_07_abort_repeat/scenarios-original.json saved to disk
+app          2026-11-03 22:07:14,126 INFO     2 scenarios generated
+storage      2026-11-03 22:07:14,127 INFO     File /opt/app/resilience-tests/tf_smoke_07_abort_repeat/scenarios.json saved to disk
+app          2026-11-03 22:07:15,130 INFO     group[f100u5] starting processing 2 scenarios
+app          2026-11-03 22:07:15,130 INFO     group[f100u5] processing scenario 1/2
+timeline     2026-11-03 22:07:16,139 INFO     fault window 1 (1/1 in the list) on at 1003 ms
+timeline     2026-11-03 22:07:17,140 INFO     fault window 1 (1/1 in the list) off at 2004 ms
+timeline     2026-11-03 22:07:18,138 INFO     fault window 2 (1/1 in the list) on at 3002 ms
+timeline     2026-11-03 22:07:19,139 INFO     fault window 2 (1/1 in the list) off at 4003 ms
+timeline     2026-11-03 22:07:20,140 INFO     fault window 3 (1/1 in the list) on at 5003 ms
+timeline     2026-11-03 22:07:21,139 INFO     fault window 3 (1/1 in the list) off at 6002 ms
+timeline     2026-11-03 22:07:22,139 INFO     fault window 4 (1/1 in the list) on at 7002 ms
+timeline     2026-11-03 22:07:23,140 INFO     fault window 4 (1/1 in the list) off at 8004 ms
+timeline     2026-11-03 22:07:24,139 INFO     fault window 5 (1/1 in the list) on at 9003 ms
+timeline     2026-11-03 22:07:25,139 INFO     fault window 5 (1/1 in the list) off at 10003 ms
+timeline     2026-11-03 22:07:26,139 INFO     fault window 6 (1/1 in the list) on at 11003 ms
+timeline     2026-11-03 22:07:27,139 INFO     fault window 6 (1/1 in the list) off at 12002 ms
+timeline     2026-11-03 22:07:28,138 INFO     fault window 7 (1/1 in the list) on at 13002 ms
+timeline     2026-11-03 22:07:29,139 INFO     fault window 7 (1/1 in the list) off at 14002 ms
+timeline     2026-11-03 22:07:30,139 INFO     fault window 8 (1/1 in the list) on at 15003 ms
+timeline     2026-11-03 22:07:31,139 INFO     fault window 8 (1/1 in the list) off at 16002 ms
+app          2026-11-03 22:07:32,086 INFO     group[f100u5] collecting user results 1/5
+app          2026-11-03 22:07:32,086 INFO     group[f100u5] collecting user results 2/5
+app          2026-11-03 22:07:32,098 INFO     group[f100u5] collecting user results 3/5
+app          2026-11-03 22:07:32,117 INFO     group[f100u5] collecting user results 4/5
+app          2026-11-03 22:07:32,119 INFO     group[f100u5] collecting user results 5/5
+app          2026-11-03 22:07:32,120 INFO     group[f100u5] processing scenario 2/2
+timeline     2026-11-03 22:07:33,124 INFO     fault window 1 (1/1 in the list) on at 1002 ms
+timeline     2026-11-03 22:07:34,125 INFO     fault window 1 (1/1 in the list) off at 2004 ms
+timeline     2026-11-03 22:07:35,124 INFO     fault window 2 (1/1 in the list) on at 3003 ms
+timeline     2026-11-03 22:07:36,126 INFO     fault window 2 (1/1 in the list) off at 4005 ms
+timeline     2026-11-03 22:07:37,122 INFO     fault window 3 (1/1 in the list) on at 5001 ms
+timeline     2026-11-03 22:07:38,124 INFO     fault window 3 (1/1 in the list) off at 6003 ms
+timeline     2026-11-03 22:07:39,122 INFO     fault window 4 (1/1 in the list) on at 7001 ms
+timeline     2026-11-03 22:07:40,123 INFO     fault window 4 (1/1 in the list) off at 8002 ms
+timeline     2026-11-03 22:07:41,126 INFO     fault window 5 (1/1 in the list) on at 9005 ms
+timeline     2026-11-03 22:07:42,123 INFO     fault window 5 (1/1 in the list) off at 10002 ms
+timeline     2026-11-03 22:07:43,124 INFO     fault window 6 (1/1 in the list) on at 11003 ms
+timeline     2026-11-03 22:07:44,123 INFO     fault window 6 (1/1 in the list) off at 12002 ms
+timeline     2026-11-03 22:07:45,123 INFO     fault window 7 (1/1 in the list) on at 13002 ms
+timeline     2026-11-03 22:07:46,123 INFO     fault window 7 (1/1 in the list) off at 14002 ms
+timeline     2026-11-03 22:07:47,124 INFO     fault window 8 (1/1 in the list) on at 15003 ms
+timeline     2026-11-03 22:07:48,123 INFO     fault window 8 (1/1 in the list) off at 16002 ms
+app          2026-11-03 22:07:48,643 INFO     group[f100u5] collecting user results 1/5
+app          2026-11-03 22:07:48,657 INFO     group[f100u5] collecting user results 2/5
+app          2026-11-03 22:07:48,690 INFO     group[f100u5] collecting user results 3/5
+app          2026-11-03 22:07:48,699 INFO     group[f100u5] collecting user results 4/5
+app          2026-11-03 22:07:48,730 INFO     group[f100u5] collecting user results 5/5
+storage      2026-11-03 22:07:48,742 INFO     File /opt/app/resilience-tests/tf_smoke_07_abort_repeat/results_f100u5.csv saved to disk
+storage      2026-11-03 22:07:50,869 INFO     File /opt/app/resilience-tests/tf_smoke_07_abort_repeat/accesslog_f100u5.log saved to disk
+storage      2026-11-03 22:07:50,873 INFO     File /opt/app/resilience-tests/tf_smoke_07_abort_repeat/results.csv saved to disk
