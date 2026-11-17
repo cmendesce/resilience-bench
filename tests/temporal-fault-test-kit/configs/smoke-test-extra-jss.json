@@ -16,8 +16,8 @@
     ],
     "windows": [
       {
-        "start": 500,
-        "duration": 500
+        "start": 750,
+        "duration": 250
       }
     ],
     "repeat": true
