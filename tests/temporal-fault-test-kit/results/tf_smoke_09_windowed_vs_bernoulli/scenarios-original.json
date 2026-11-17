@@ -1,0 +1,118 @@
+{
+  "testId": "tf_smoke_09_windowed_vs_bernoulli",
+  "users": [
+    50,
+    150
+  ],
+  "rounds": 1,
+  "maxRequests": 1000000,
+  "succRequests": 1000,
+  "targetUrl": "http://server:9211/bytes/1000",
+  "fault": {
+    "type": "abort",
+    "status": 503,
+    "percentage": [
+      50
+    ],
+    "windows": [
+      {
+        "start": 500,
+        "duration": 500
+      }
+    ],
+    "repeat": true
+  },
+  "clientSpecs": [
+    {
+      "strategy": "retry",
+      "platform": "dotnet",
+      "lib": "polly",
+      "url": "http://polly/retry",
+      "patternConfig": {
+        "count": [
+          1,
+          5,
+          9
+        ],
+        "sleepDuration": [
+          10,
+          50,
+          90
+        ],
+        "exponentialBackoffPow": [
+          1.1,
+          1.5,
+          1.9
+        ]
+      }
+    },
+    {
+      "strategy": "retry",
+      "platform": "java",
+      "lib": "resilience4j",
+      "url": "http://resilience4j/retry",
+      "patternConfig": {
+        "maxAttempts": [
+          2,
+          6,
+          10
+        ],
+        "initialIntervalMillis": [
+          10,
+          50,
+          90
+        ],
+        "multiplier": [
+          1.1,
+          1.5,
+          1.9
+        ]
+      }
+    },
+    {
+      "strategy": "circuit_breaker",
+      "platform": "dotnet",
+      "lib": "polly",
+      "url": "http://polly/circuitbreaker",
+      "patternConfig": {
+        "exceptionsAllowedBeforeBreaking": [
+          2,
+          10,
+          18
+        ],
+        "durationOfBreaking": [
+          100,
+          300,
+          500
+        ]
+      }
+    },
+    {
+      "strategy": "circuit_breaker",
+      "platform": "java",
+      "lib": "resilience4j",
+      "url": "http://resilience4j/cb",
+      "patternConfig": {
+        "slowCallRateThreshold": 100,
+        "slowCallDurationThreshold": 1000,
+        "slidingWindowSize": 10,
+        "failureRateThreshold": [
+          10,
+          50,
+          90
+        ],
+        "minimumNumberOfCalls": [
+          2,
+          10,
+          18
+        ],
+        "permittedNumberOfCallsInHalfOpenState": 1,
+        "waitDurationInOpenState": [
+          100,
+          300,
+          500
+        ]
+      }
+    }
+  ]
+}
