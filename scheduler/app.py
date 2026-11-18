@@ -12,6 +12,7 @@ from utils import expand_config_template
 from storage import save_to_file, copy_file
 from envoy import Envoy
 from fault_timeline import FaultTimeline, validate_windows
+from access_log import AccessLog
 from logger import get_logger
 
 logger = get_logger('app')
@@ -72,7 +73,9 @@ def main():
     conf_file = open(os.environ.get('CONFIG_FILE'), 'r')
     conf = jstyleson.load(conf_file)
     if 'windows' in conf['fault']:
-        validate_windows(conf['fault']['windows'])
+        validate_windows(conf['fault']['windows'], conf['fault'].get('repeat', False))
+    elif 'repeat' in conf['fault']:
+        raise ValueError('fault.repeat requires fault.windows')
     
     test_id = conf['testId'] if 'testId' in conf else get_current_time().strftime('%a %b %d %Hh%Mm%Ss %Y')
     copy_file(os.environ.get('CONFIG_FILE'), f'{test_id}/scenarios-original.json')
@@ -80,6 +83,8 @@ def main():
     scenario_groups = build_scenarios(conf, test_id)
     all_results = []
     envoy = Envoy()
+    access_log = AccessLog()
+    access_log.reset()
 
     for scenario_group in scenario_groups.keys():
         total_group_scenarios = len(scenario_groups[scenario_group])
@@ -96,7 +101,8 @@ def main():
             fault_spec = scenario['faultSpec']
             timeline = None
             if 'windows' in fault_spec:
-                timeline = FaultTimeline(envoy, fault_spec, int(scenario['faultPercentage']), fault_spec['windows'])
+                timeline = FaultTimeline(envoy, fault_spec, int(scenario['faultPercentage']), fault_spec['windows'],
+                                         fault_spec.get('repeat', False))
             else:
                 envoy.setup_fault(fault_spec, int(scenario['faultPercentage']))
 
@@ -127,6 +133,7 @@ def main():
 
         all_results += results
         save_to_file(f'{test_id}/results_{scenario_group}', results, 'csv')
+        access_log.collect(f'{test_id}/accesslog_{scenario_group}.log')
             
     save_to_file(f'{test_id}/results', all_results, 'csv')
 

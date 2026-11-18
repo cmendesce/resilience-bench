@@ -1,0 +1,40 @@
+{
+  "testId": "tf_smoke_03_abort_percentages",
+  "users": [
+    5
+  ],
+  "rounds": 1,
+  "maxRequests": 100000,
+  "succRequests": 5000,
+  "targetUrl": "http://server:9211/bytes/1000",
+  "fault": {
+    "type": "abort",
+    "status": 503,
+    "percentage": [
+      50,
+      100
+    ],
+    "windows": [
+      {
+        "start": 500,
+        "duration": 1500
+      }
+    ]
+  },
+  "clientSpecs": [
+    {
+      "strategy": "baseline",
+      "platform": "dotnet",
+      "lib": "polly",
+      "url": "http://polly/baseline",
+      "patternConfig": {}
+    },
+    {
+      "strategy": "baseline",
+      "platform": "java",
+      "lib": "resilience4j",
+      "url": "http://resilience4j/baseline",
+      "patternConfig": {}
+    }
+  ]
+}
